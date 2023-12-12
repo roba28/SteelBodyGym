@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\about2.cshtml" />
+    <Content Remove="Views\Home\blog2.cshtml" />
+    <Content Remove="Views\Home\class2.cshtml" />
+    <Content Remove="Views\Home\contact.cshtml" />
+    <Content Remove="Views\Home\feature2.cshtml" />
+    <Content Remove="Views\Home\single.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Home\about2.cshtml" />
+    <None Include="Views\Home\blog2.cshtml" />
+    <None Include="Views\Home\class2.cshtml" />
+    <None Include="Views\Home\contact.cshtml" />
+    <None Include="Views\Home\feature2.cshtml" />
+    <None Include="Views\Home\single.cshtml" />
+    <None Include="wwwroot\css\style.min.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Home\css\" />
+  </ItemGroup>
+
+</Project>
