@@ -51,6 +51,8 @@ CREATE TABLE MaquinasGimnasio (
 CREATE TABLE Provincia (
     provincia_id INT PRIMARY KEY,
     nombre_provincia VARCHAR(50) NOT NULL
+
+
 );
 
 CREATE TABLE Canton (
