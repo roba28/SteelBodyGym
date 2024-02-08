@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SteelBodyGym.IServices;
+using SteelBodyGym.Model;
 using SteelBodyGym.Models;
 using System.Diagnostics;
 
@@ -7,10 +9,12 @@ namespace SteelBodyGym.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IAdministratorService _AdministratorService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IAdministratorService AdministratorService)
         {
             _logger = logger;
+            _AdministratorService= AdministratorService;
         }
 
         public IActionResult Index()
@@ -48,6 +52,11 @@ namespace SteelBodyGym.Controllers
         public IActionResult Ingresar()
         {
             return View();
+        }
+
+        public IActionResult GetRoles()
+        {
+            return Ok(_AdministratorService.GetRoles().ToList());
         }
     }
 }
