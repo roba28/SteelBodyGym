@@ -10,130 +10,117 @@
             <div class="modal-body">
                 <div class="col-sm-12">
                     <div class="row">
-                        @* <div class="col-md-12">
-                            <textarea class="form-control" rows="5" id="comment" placeholder="Dirección..." ng-model="frmAccount.home_Address"></textarea>
-                            <br />
-                        </div> *@
                         <div class="col-md-6">
                             <p>Tipo Identificación</p>
-                            <select class="form-control">
-                                <option value="">Cédula Física Nacional</option>
-                                <option value="">Pasaporte</option>
-                                <option value="">Cédula extranjero</option>
+                            <select class="form-control"
+                                    id="IdentificationType"
+                                    required
+                                    ng-model="frmUser.Identification_Type_ID"
+                                    ng-options="item.identificationTypeID as item.name for item in vSelectIdentificationType">
                             </select>
                             <br />
                         </div>
                         <div class="col-md-6">
                             <p>Cédula</p>
-                            <input type="text" class="form-control phone" />
+                            <input type="text" id="IdNumber" class="form-control phone" ng-model="frmUser.Id_Number" />
                             <br />
                         </div>
                         <div class="col-md-6">
                             <p>Nombre</p>
-                            <input type="text" class="form-control phone" />
+                            <input type="text" id="Name"  class="form-control phone" ng-model="frmUser.Name" />
                             <br />
                         </div>
                         <div class="col-md-6">
-                            <p>Primer Apellido</p>
-                            <input type="text" class="form-control phone" />
+                            <p>Primer Apellido</p> 
+                            <input type="text" id="FirstName" class="form-control phone" ng-model="frmUser.FistName" />
                             <br />
                         </div>
                         <div class="col-md-6">
                             <p>Segundo Apellido</p>
-                            <input type="text" class="form-control phone" />
+                            <input type="text" id="LastName" class="form-control phone" ng-model="frmUser.LastName" />
                             <br />
                         </div>
                         <div class="col-md-6">
                             <p>Fecha Nacimiento</p>
-                            <input type="date" class="form-control phone" />
+                            <input type="date" id="BirthDate" class="form-control phone" ng-model="frmUser.Birth_Date" />
                             <br />
                         </div>
                         <div class="col-md-6">
                             <p>Género</p>
-                            <select class="form-control">
-                                <option value="">Masculino</option>
-                                <option value="">Femenino</option>
+                            <select class="form-control" ng-model="frmUser.Gender" id="Gender">
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
                             </select>
                             <br />
                         </div>
                         <div class="col-md-6">
+                            <p>Correo electrónico</p>
+                            <input type="email" id="Email" class="form-control phone" ng-model="frmUser.Email" />
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Teléfono</p>
+                            <input type="text" id="Phone" class="form-control phone" ng-model="frmUser.Phone" />
+                            <br />
+                        </div>
+                        <div class="col-md-6">
                             <p>Rol</p>
-                            <select class="form-control">
-                                <option value="">Administrador</option>
-                                <option value="">Cliente</option>
-                                <option value="">Entrenador</option>
+                            <select class="form-control"
+                                    id="Rol"
+                                    required
+                                    ng-model="frmUser.Id_Rol"
+                                    ng-options="item.idRol as item.rolName for item in vSelectRoles">
                             </select>
                             <br />
                         </div>
                         <div class="col-md-6">
                             <p>Estado</p>
-                            <select class="form-control">
-                                <option value="">Activo</option>
-                                <option value="">Inactivo</option>
+                            <select class="form-control"
+                                    id="State"
+                                    required
+                                    ng-model="frmUser.Id_State"
+                                    ng-options="item.idState as item.stateName for item in vSelectUserState">
                             </select>
                             <br />
                         </div>
                         <div class="col-md-6">
                             <p>Provincia</p>
-                            <select class="form-control">
-                                <option value="">Cartago</option>
-                                <option value="">Puntarenas</option>
-                                <option value="">Limón</option>
+                            <select class="form-control"
+                                    id="province"
+                                    required
+                                    ng-model="frmUser.Id_Province"
+                                    ng-options="item.idProvince as item.provinceName for item in vSelectProvinces"
+                            @*ng-change="refreshData(frmCert.RequestReasonGUID)"*@>
                             </select>
                             <br />
                         </div>
                         <div class="col-md-6">
                             <p>Cantón</p>
-                            <select class="form-control">
-                                <option value="">El Guarco</option>
+                            <select class="form-control"
+                                    id="Counties"
+                                    required
+                                    ng-model="frmUser.Id_Counties"
+                                    ng-options="item.idCounties as item.name for item in vSelectCounties"
+                            @*ng-change="refreshData(frmCert.RequestReasonGUID)"*@>
                             </select>
                             <br />
                         </div>
                         <div class="col-md-6">
                             <p>Distrito</p>
-                            <select class="form-control">
-                                <option value="">Tobosi</option>
+                            <select class="form-control"
+                                    id="Cities"
+                                    required
+                                    ng-model="frmUser.Id_Cities"
+                                    ng-options="item.idCities as item.name for item in vSelectCities"
+                            @*ng-change="refreshData(frmCert.RequestReasonGUID)"*@>
                             </select>
                             <br />
                         </div>
-                       
-                      @*   <div class="col-md-6">
-                            <p>Provincia</p>
-                            <select class="form-control"
-                                    ng-model="frmAccount.province_GUID"
-                                    ng-options="item.province_GUID as item.name for item in selectProvinces"
-                                    ng-change="getCountiesDataSource(frmAccount.province_GUID)"
-                                    ng-disabled="frmAccount.has_Foreign_Residence">
-                                <option value="">Seleccione una provincia</option>
-                            </select>
-                            <br />
-                        </div>
-                        <div class="col-md-6">
-                            <p>Cantón</p>
-                            <select class="form-control"
-                                    ng-model="frmAccount.county_GUID"
-                                    ng-options="item.county_GUID as item.name for item in selectCounties"
-                                    ng-change="getCitiesDataSource(frmAccount.county_GUID)"
-                                    ng-disabled="frmAccount.has_Foreign_Residence">
-                                <option value="">Seleccione un cantón</option>
-                            </select>
-                            <br />
-                        </div>
-                        <div class="col-md-6">
-                            <p>Ciudad / Distrito</p>
-                            <select class="form-control"
-                                    ng-model="frmAccount.city_GUID"
-                                    ng-options="item.city_GUID as item.name for item in selectCities"
-                                    ng-disabled="frmAccount.has_Foreign_Residence">
-                                <option value="">Seleccione una ciudad</option>
-                            </select>
-                            <br />
-                        </div> *@
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning text-black">Guardar</button>
+                <button type="button" class="btn btn-warning text-black" ng-click="uploadStudent()">Guardar</button>
                 <button type="button" class="btn btn-danger text-black" data-dismiss="modal">Cerrar</button>
             </div>
         </div>

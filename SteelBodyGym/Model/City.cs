@@ -14,7 +14,7 @@ namespace SteelBodyGym.Model
         public string Name { get; set; } = null!;
         public Guid? IdCounties { get; set; }
 
-        public virtual County IdCitiesNavigation { get; set; } = null!;
+        public virtual County? IdCountiesNavigation { get; set; }
         public virtual ICollection<User> Users { get; set; }
     }
 }

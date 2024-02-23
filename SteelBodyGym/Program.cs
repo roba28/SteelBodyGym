@@ -10,6 +10,7 @@ using SteelBodyGym.Services;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IAdministratorService, AdministratorService>();
+builder.Services.AddScoped<IGlobalServices, GlobalServices>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

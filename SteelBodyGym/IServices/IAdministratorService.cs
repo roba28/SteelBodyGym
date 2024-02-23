@@ -15,5 +15,6 @@ namespace SteelBodyGym.IServices
         List<UserState> GetUserStates();
 
         List<ViewsPerRole> GetPerRoles();
+        bool? UploadUser(User auser);
     }
 }

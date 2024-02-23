@@ -9,17 +9,17 @@ namespace SteelBodyGym.Services
     
     public class AdministratorService : IAdministratorService
     {
-        public  SteelBodyGymContext _SteelBodyGymContext;
+        public SteelBodyGymContext _SteelBodyGymContext;
 
         public AdministratorService()
         {
             this._SteelBodyGymContext = new SteelBodyGymContext();
         }
-        public List<Role> GetRoles( )
+        public List<Role> GetRoles()
         {
             return _SteelBodyGymContext.Roles.ToList();
         }
-       public List<PaymentType> GetPaymentTypes()
+        public List<PaymentType> GetPaymentTypes()
         {
             return _SteelBodyGymContext.PaymentTypes.ToList();
         }
@@ -47,6 +47,44 @@ namespace SteelBodyGym.Services
         {
             return _SteelBodyGymContext.ViewsPerRoles.ToList();
         }
+
+        public bool? UploadUser(User auser)
+        {
+            var userData = _SteelBodyGymContext.Users.Where(st => st.IdNumber == auser.IdNumber)
+                              .Select(st => st).Single();
+            User u = userData;
+            if (u != null)
+            {
+                try
+                {
+                    u.IdNumber = auser.IdNumber;
+                    u.Name = auser.Name;
+                    u.Firstname = auser.Firstname;
+                    u.LastName = auser.LastName;
+                    u.BirthDate = auser.BirthDate;
+                    u.Gender = auser.Gender;
+                    u.IdRol = auser.IdRol;
+                    u.IdentificationTypeId = auser.IdentificationTypeId;
+                    u.IdProvince = auser.IdProvince;
+                    u.IdCounties = auser.IdCounties;
+                    u.IdCities = auser.IdCities;
+                    u.Email = auser.Email;
+                    u.Phone = auser.Phone;
+                    _SteelBodyGymContext.Update(u);
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                _SteelBodyGymContext.Users.Add(auser);
+                _SteelBodyGymContext.SaveChanges();
+            }
+            return true;
+        }
+
     }
 }
 

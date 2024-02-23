@@ -7,6 +7,7 @@ namespace SteelBodyGym.Model
     {
         public County()
         {
+            Cities = new HashSet<City>();
             Users = new HashSet<User>();
         }
 
@@ -15,7 +16,7 @@ namespace SteelBodyGym.Model
         public Guid? IdProvince { get; set; }
 
         public virtual Province? IdProvinceNavigation { get; set; }
-        public virtual City? City { get; set; }
+        public virtual ICollection<City> Cities { get; set; }
         public virtual ICollection<User> Users { get; set; }
     }
 }
