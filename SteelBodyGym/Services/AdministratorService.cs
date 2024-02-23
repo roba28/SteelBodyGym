@@ -9,7 +9,12 @@ namespace SteelBodyGym.Services
     
     public class AdministratorService : IAdministratorService
     {
-        private readonly SteelBodyGymContext _SteelBodyGymContext;
+        public  SteelBodyGymContext _SteelBodyGymContext;
+
+        public AdministratorService()
+        {
+            this._SteelBodyGymContext = new SteelBodyGymContext();
+        }
         public List<Role> GetRoles( )
         {
             return _SteelBodyGymContext.Roles.ToList();
@@ -43,6 +48,7 @@ namespace SteelBodyGym.Services
             return _SteelBodyGymContext.ViewsPerRoles.ToList();
         }
     }
+}
 
 
 

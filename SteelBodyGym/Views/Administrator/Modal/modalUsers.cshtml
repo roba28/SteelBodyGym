@@ -1,0 +1,141 @@
+﻿<!-- Modal -->
+<div class="modal fade modal-fullscreen" id="modalUsers" role="dialog" style="position:fixed; z-index:1000; padding-top:5%" data-backdrop="false" ng-app="myApp" ng-controller="UserController">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h4 class="modal-title">Creación de usuario</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12">
+                    <div class="row">
+                        @* <div class="col-md-12">
+                            <textarea class="form-control" rows="5" id="comment" placeholder="Dirección..." ng-model="frmAccount.home_Address"></textarea>
+                            <br />
+                        </div> *@
+                        <div class="col-md-6">
+                            <p>Tipo Identificación</p>
+                            <select class="form-control">
+                                <option value="">Cédula Física Nacional</option>
+                                <option value="">Pasaporte</option>
+                                <option value="">Cédula extranjero</option>
+                            </select>
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Cédula</p>
+                            <input type="text" class="form-control phone" />
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Nombre</p>
+                            <input type="text" class="form-control phone" />
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Primer Apellido</p>
+                            <input type="text" class="form-control phone" />
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Segundo Apellido</p>
+                            <input type="text" class="form-control phone" />
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Fecha Nacimiento</p>
+                            <input type="date" class="form-control phone" />
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Género</p>
+                            <select class="form-control">
+                                <option value="">Masculino</option>
+                                <option value="">Femenino</option>
+                            </select>
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Rol</p>
+                            <select class="form-control">
+                                <option value="">Administrador</option>
+                                <option value="">Cliente</option>
+                                <option value="">Entrenador</option>
+                            </select>
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Estado</p>
+                            <select class="form-control">
+                                <option value="">Activo</option>
+                                <option value="">Inactivo</option>
+                            </select>
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Provincia</p>
+                            <select class="form-control">
+                                <option value="">Cartago</option>
+                                <option value="">Puntarenas</option>
+                                <option value="">Limón</option>
+                            </select>
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Cantón</p>
+                            <select class="form-control">
+                                <option value="">El Guarco</option>
+                            </select>
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Distrito</p>
+                            <select class="form-control">
+                                <option value="">Tobosi</option>
+                            </select>
+                            <br />
+                        </div>
+                       
+                      @*   <div class="col-md-6">
+                            <p>Provincia</p>
+                            <select class="form-control"
+                                    ng-model="frmAccount.province_GUID"
+                                    ng-options="item.province_GUID as item.name for item in selectProvinces"
+                                    ng-change="getCountiesDataSource(frmAccount.province_GUID)"
+                                    ng-disabled="frmAccount.has_Foreign_Residence">
+                                <option value="">Seleccione una provincia</option>
+                            </select>
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Cantón</p>
+                            <select class="form-control"
+                                    ng-model="frmAccount.county_GUID"
+                                    ng-options="item.county_GUID as item.name for item in selectCounties"
+                                    ng-change="getCitiesDataSource(frmAccount.county_GUID)"
+                                    ng-disabled="frmAccount.has_Foreign_Residence">
+                                <option value="">Seleccione un cantón</option>
+                            </select>
+                            <br />
+                        </div>
+                        <div class="col-md-6">
+                            <p>Ciudad / Distrito</p>
+                            <select class="form-control"
+                                    ng-model="frmAccount.city_GUID"
+                                    ng-options="item.city_GUID as item.name for item in selectCities"
+                                    ng-disabled="frmAccount.has_Foreign_Residence">
+                                <option value="">Seleccione una ciudad</option>
+                            </select>
+                            <br />
+                        </div> *@
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning text-black">Guardar</button>
+                <button type="button" class="btn btn-danger text-black" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

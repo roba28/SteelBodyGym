@@ -54,9 +54,15 @@ namespace SteelBodyGym.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult GetRoles()
         {
             return Ok(_AdministratorService.GetRoles().ToList());
+        }
+
+        public IActionResult _LayoutAdmin()
+        {
+            return PartialView();
         }
     }
 }
