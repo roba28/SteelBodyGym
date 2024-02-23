@@ -25,6 +25,9 @@ namespace SteelBodyGym.Model
         public Guid? IdProvince { get; set; }
         public Guid? IdCounties { get; set; }
         public Guid? IdCities { get; set; }
+        public string? Email { get; set; }
+        public string? Phone { get; set; }
+        public string? Password { get; set; }
 
         public virtual City? IdCitiesNavigation { get; set; }
         public virtual County? IdCountiesNavigation { get; set; }

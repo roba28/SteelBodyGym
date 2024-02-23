@@ -7,7 +7,6 @@ namespace SteelBodyGym.Model
 {
     public partial class SteelBodyGymContext : DbContext
     {
-
         public SteelBodyGymContext()
         {
         }
@@ -38,7 +37,7 @@ namespace SteelBodyGym.Model
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=(local);Initial Catalog=SteelBodyGym;Integrated Security=True;");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-QKGV96EV;Database=SteelBodyGym;Trusted_Connection=True;");
             }
         }
 
@@ -88,11 +87,10 @@ namespace SteelBodyGym.Model
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdCitiesNavigation)
-                    .WithOne(p => p.City)
-                    .HasForeignKey<City>(d => d.IdCities)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Cities__Id_Citie__4BAC3F29");
+                entity.HasOne(d => d.IdCountiesNavigation)
+                    .WithMany(p => p.Cities)
+                    .HasForeignKey(d => d.IdCounties)
+                    .HasConstraintName("FK__Cities__Id_Count__01142BA1");
             });
 
             modelBuilder.Entity<County>(entity =>
@@ -311,6 +309,8 @@ namespace SteelBodyGym.Model
                     .HasColumnType("date")
                     .HasColumnName("Birth_Date");
 
+                entity.Property(e => e.Email).HasMaxLength(50);
+
                 entity.Property(e => e.Firstname)
                     .HasMaxLength(50)
                     .IsUnicode(false);
@@ -343,6 +343,10 @@ namespace SteelBodyGym.Model
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Password).HasMaxLength(50);
+
+                entity.Property(e => e.Phone).HasMaxLength(50);
 
                 entity.HasOne(d => d.IdCitiesNavigation)
                     .WithMany(p => p.Users)
