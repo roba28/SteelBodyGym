@@ -5,21 +5,15 @@ namespace SteelBodyGym.IServices
     public interface IAdministratorService
     {
         List<Role> GetRoles();
+        List<PaymentType> GetPaymentTypes();
+        List<Province> GetProvinces();
 
-        List<BodyMeasurementsUser> GetBodyMeasurementsUsers();
+        List<RoutinesPerUser> GetRoutinesPerUsers();
 
-        List<City> GetCity();
+        List<User> GetUsers();
 
-        List<County> GetCounties();
+        List<UserState> GetUserStates();
 
-        List<GymMachine> GetGymMachines();
-
-        List<GymRoutine> GetGymRoutine();
-
-        List<IdentificationType> GetIdentificationTypes();
-
-        List<MembershipRegistrationType> GetMembershipRegistrationTypes();
-
-        List<PaymentsPerUser> GetPaymentsPerUsers();
+        List<ViewsPerRole> GetPerRoles();
     }
 }

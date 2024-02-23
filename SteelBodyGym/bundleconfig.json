@@ -1,0 +1,16 @@
+[
+
+	{
+		"outputFileName": "~/lib/bundles/modules.min.js",
+		"inputFiles": [
+			"~/app/components/module/steelbodymodule.js",
+			"~/app/components/authenticationcontroller.js"
+		],
+
+		"minify": {
+			"enabled": true,
+			"renameLocals": true
+		},
+		"sourceMap": false
+	}
+]

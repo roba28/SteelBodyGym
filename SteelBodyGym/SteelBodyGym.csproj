@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Home\css\**" />
+    <Content Remove="Views\Home\css\**" />
+    <EmbeddedResource Remove="Views\Home\css\**" />
+    <None Remove="Views\Home\css\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\Home\about2.cshtml" />
     <Content Remove="Views\Home\blog2.cshtml" />
     <Content Remove="Views\Home\class2.cshtml" />
@@ -26,10 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Home\css\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="angularjs" Version="1.8.2" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="BundlerMinifier.Core" Version="3.2.449" />
+    <PackageReference Include="jQuery" Version="3.7.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.26" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.26">
       <PrivateAssets>all</PrivateAssets>
@@ -40,6 +47,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
   </ItemGroup>
 
 </Project>
