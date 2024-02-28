@@ -32,6 +32,7 @@ app.controller('AuthenticationController', function ($scope, $http, $filter, $wi
         //    }
         //);
         window.location.href = "/Home/_LayoutUser";
+
     }
 
     $scope.OpenModal = function () {

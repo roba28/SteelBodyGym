@@ -58,7 +58,13 @@ namespace SteelBodyGym.Controllers
         {
             return PartialView();
         }
+
         public IActionResult _LayoutUser()
+        {
+            return PartialView();
+        }
+        public IActionResult _LayoutCoach()
+
         {
             return PartialView();
         }
