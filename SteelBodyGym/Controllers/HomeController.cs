@@ -14,7 +14,7 @@ namespace SteelBodyGym.Controllers
         public HomeController(ILogger<HomeController> logger, IAdministratorService AdministratorService)
         {
             _logger = logger;
-            _AdministratorService= AdministratorService;
+            _AdministratorService = AdministratorService;
         }
 
         public IActionResult Index()
@@ -54,9 +54,11 @@ namespace SteelBodyGym.Controllers
             return View();
         }
 
-        
-
         public IActionResult _LayoutAdmin()
+        {
+            return PartialView();
+        }
+        public IActionResult _LayoutUser()
         {
             return PartialView();
         }
