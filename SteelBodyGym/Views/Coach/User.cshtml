@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/app/components/UserController.js"></script>
+<head>
+    <meta charset="utf-8">
+    <title>SteelBody Gym</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free Website Template" name="keywords">
+    <meta content="Free Website Template" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+</head>
+
+<body class="bg-white">
+    <div ng-app="myApp" ng-controller="UserController">
+
+        <p>
+            @Html.Partial("_LayoutCoach")
+        </p>
+        <div>
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 50px">
+                <h2 class="text-warning text-uppercase font-weight-bold">Usuarios</h2>
+            </div>
+            <div class="d-flex justify-content-lg-start">
+            </div><br />
+            <div class="card">
+                <div class="card-body">
+                    <table id="dataTableCertificationStatement" class="table responsive nowrap" width="100%">
+                        <thead>
+                            <tr>
+                                <th data-priority="1">Cédula </th>
+                                <th>Nombre</th>
+                                <th>Primer Apellido</th>
+                                <th>Segundo Apellido</th>
+                                <th data-priority="2">Acción</th>
+
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <partial name="~/Views/Administrator/Modal/modalUsers.cshtml">
+        </div>
+    </div>
+
+    <a href="#" class="btn btn-outline-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+</body>
+
+</html>

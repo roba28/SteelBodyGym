@@ -31,7 +31,7 @@ app.controller('AuthenticationController', function ($scope, $http, $filter, $wi
                
         //    }
         //);
-        window.location.href = "/Home/_LayoutAdmin";
+        window.location.href = "/Coach/GymMachines";
     }
 
     $scope.OpenModal = function () {
