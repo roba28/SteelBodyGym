@@ -409,3 +409,38 @@ USE [master]
 GO
 ALTER DATABASE [SteelBodyGym] SET  READ_WRITE 
 GO
+
+
+
+INSERT INTO [dbo].[Users]
+           ([Id_Number]
+           ,[Name]
+           ,[Firstname]
+           ,[LastName]
+           ,[Birth_Date]
+           ,[Gender]
+           ,[Id_Rol]
+           ,[Identification_Type_ID]
+           ,[Id_State]
+           ,[Id_Province]
+           ,[Id_Counties]
+           ,[Id_Cities]
+           ,[Email]
+           ,[Phone]
+           ,[Password])
+     VALUES
+           ('304870221'
+           ,'Ronny'
+           ,'Aguilar'
+           ,'Barahona'
+           ,'1995-05-28'
+           ,'Masculino'
+           ,'558818D1-35D1-4124-95A6-61FF5C24295E'
+           ,'4A5EF716-D6FF-4223-B017-82E119B41C6F'
+           ,'8F14BA4C-CDDE-431F-92D1-66D2754B5E30'
+           ,'1E894F4D-2A6C-44A6-9FC1-D61B36EC6BB2'
+           ,'E5EE2DDF-3E68-40D5-A7B0-4FCAB80A70A0'
+           ,'076F548B-4A58-4C0C-83EF-F8CB6753A737'
+           ,'ronny199528@gmail.com'
+           ,'85384263'
+           ,'123456')

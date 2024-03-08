@@ -53,11 +53,11 @@
                     <div id="success"></div>
                      <form name="login" id="login" novalidate="novalidate">
                         <div class="control-group">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name" required="required" data-validation-required-message="Usuario" />
+                        <input type="text" class="form-control" id="name" placeholder="Cédula" required="required" data-validation-required-message="Usuario" ng-model="frmUser.IdNumber" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="control-group">
-                            <input type="password" class="form-control" id="email" placeholder="Your Email" required="required" data-validation-required-message="Contraseña" />
+                        <input type="password" class="form-control" id="pass" placeholder="Contraseña" required="required" data-validation-required-message="Contraseña" ng-model="frmUser.Password" />
                             <p class="help-block text-danger"></p>
                         </div>
                         <div class="d-flex justify-content-center">

@@ -15,14 +15,14 @@
                             <select class="form-control"
                                     id="IdentificationType"
                                     required
-                                    ng-model="frmUser.Identification_Type_ID"
-                                    ng-options="item.identificationTypeID as item.name for item in vSelectIdentificationType">
+                                    ng-model="frmUser.IdentificationTypeId"
+                                    ng-options="item.identificationTypeId as item.name for item in vSelectIdentificationType">
                             </select>
                             <br />
                         </div>
                         <div class="col-md-6">
                             <p>Cédula</p>
-                            <input type="text" id="IdNumber" class="form-control phone" ng-model="frmUser.Id_Number" />
+                            <input type="text" id="IdNumber" class="form-control phone" ng-model="frmUser.IdNumber" />
                             <br />
                         </div>
                         <div class="col-md-6">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-md-6">
                             <p>Primer Apellido</p> 
-                            <input type="text" id="FirstName" class="form-control phone" ng-model="frmUser.FistName" />
+                            <input type="text" id="FirstName" class="form-control phone" ng-model="frmUser.Firstname" />
                             <br />
                         </div>
                         <div class="col-md-6">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-md-6">
                             <p>Fecha Nacimiento</p>
-                            <input type="date" id="BirthDate" class="form-control phone" ng-model="frmUser.Birth_Date" />
+                            <input type="date" id="BirthDate" class="form-control phone" ng-model="frmUser.BirthDate" />
                             <br />
                         </div>
                         <div class="col-md-6">
@@ -68,7 +68,7 @@
                             <select class="form-control"
                                     id="Rol"
                                     required
-                                    ng-model="frmUser.Id_Rol"
+                                    ng-model="frmUser.IdRol"
                                     ng-options="item.idRol as item.rolName for item in vSelectRoles">
                             </select>
                             <br />
@@ -78,7 +78,7 @@
                             <select class="form-control"
                                     id="State"
                                     required
-                                    ng-model="frmUser.Id_State"
+                                    ng-model="frmUser.IdState"
                                     ng-options="item.idState as item.stateName for item in vSelectUserState">
                             </select>
                             <br />
@@ -88,7 +88,7 @@
                             <select class="form-control"
                                     id="province"
                                     required
-                                    ng-model="frmUser.Id_Province"
+                                    ng-model="frmUser.IdProvince"
                                     ng-options="item.idProvince as item.provinceName for item in vSelectProvinces"
                             @*ng-change="refreshData(frmCert.RequestReasonGUID)"*@>
                             </select>
@@ -99,7 +99,7 @@
                             <select class="form-control"
                                     id="Counties"
                                     required
-                                    ng-model="frmUser.Id_Counties"
+                                    ng-model="frmUser.IdCounties"
                                     ng-options="item.idCounties as item.name for item in vSelectCounties"
                             @*ng-change="refreshData(frmCert.RequestReasonGUID)"*@>
                             </select>
@@ -110,7 +110,7 @@
                             <select class="form-control"
                                     id="Cities"
                                     required
-                                    ng-model="frmUser.Id_Cities"
+                                    ng-model="frmUser.IdCities"
                                     ng-options="item.idCities as item.name for item in vSelectCities"
                             @*ng-change="refreshData(frmCert.RequestReasonGUID)"*@>
                             </select>

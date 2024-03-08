@@ -16,5 +16,7 @@ namespace SteelBodyGym.IServices
 
         List<ViewsPerRole> GetPerRoles();
         bool? UploadUser(User auser);
+        User GetUserInfo(string aIdNumber);
+        Role GetRoleByGUID(Guid aRolGUID);
     }
 }

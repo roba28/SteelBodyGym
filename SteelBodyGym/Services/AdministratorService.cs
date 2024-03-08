@@ -50,8 +50,7 @@ namespace SteelBodyGym.Services
 
         public bool? UploadUser(User auser)
         {
-            var userData = _SteelBodyGymContext.Users.Where(st => st.IdNumber == auser.IdNumber)
-                              .Select(st => st).Single();
+            var userData = _SteelBodyGymContext.Users.Where(st => st.IdNumber == auser.IdNumber).SingleOrDefault();
             User u = userData;
             if (u != null)
             {
@@ -71,6 +70,7 @@ namespace SteelBodyGym.Services
                     u.Email = auser.Email;
                     u.Phone = auser.Phone;
                     _SteelBodyGymContext.Update(u);
+                    return true;
                 }
                 catch (Exception)
                 {
@@ -81,9 +81,22 @@ namespace SteelBodyGym.Services
             {
                 _SteelBodyGymContext.Users.Add(auser);
                 _SteelBodyGymContext.SaveChanges();
+                return true;
             }
-            return true;
+            
         }
+
+        public User GetUserInfo(string aIdNumber)
+        {
+            return _SteelBodyGymContext.Users.Where(p=>p.IdNumber==aIdNumber).SingleOrDefault();
+        }
+
+        public Role GetRoleByGUID(Guid aRolGUID)
+        {
+            return _SteelBodyGymContext.Roles.Where(p => p.IdRol == aRolGUID).SingleOrDefault();
+            
+        }
+
 
     }
 }

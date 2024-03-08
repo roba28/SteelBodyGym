@@ -11,15 +11,14 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
         LastName: null,
         Birth_Date: null,
         Gender: null,
-        Id_Rol: null,
-        Identification_Type_ID:null,
-        Id_State: null,
-        Id_Province: null,
-        Id_Counties: null,
-        Id_Cities: null,
+        IdRol: null,
+        IdentificationTypeId:null,
+        IdState: null,
+        IdProvince: null,
+        IdCounties: null,
+        IdCities: null,
         Email: null,
         Phone: null,
-
     }
     $scope.vSelectProvinces = [];
     $scope.vSelectCounties = [];
@@ -27,6 +26,7 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
     $scope.vSelectIdentificationType = [];
     $scope.vSelectUserState = [];
     $scope.vSelectRoles = [];
+    var dtTableUser;
     $scope.loadData = function () {
         $(".loader").fadeIn();
        
@@ -34,6 +34,74 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
         $(".loader").fadeOut();
     }
     $scope.loadData();
+
+    if ($.fn.dataTable.isDataTable('#dataTableUsers')) {
+        dtTableUser = $('#dataTableUsers').DataTable();
+    } else {
+        dtTableUser = $('#dataTableUsers')
+            .DataTable({
+                buttons: true,
+                scrollX: false,
+                bFilter: false,
+                bInfo: false,
+                responsive: true,
+                ordering: false,
+                processing: true,
+                iDisplayLength: 25,
+                searching: false,
+                deferLoading: 0,
+                bLengthChange: false,
+                serverSide: true,
+                language: { "url": "https://cdn.datatables.net/plug-ins/1.10.13/i18n/Spanish.json" },
+                "ajax": {
+                    "url": base_url + "Administrator/GetUserData/",
+                    "type": "POST",
+                    "datatype": "json",
+                    data: function (d) {
+                        if (!$scope.frmUser.Id_Number) {
+                            $scope.frmUser.Id_Number = "";
+                        }
+                        d.Accounts_Receivable_GUID = $scope.frmUser.Id_Number ? $scope.frmUser.Id_Number : "";
+                    },
+                    error: function () {
+                        swal("Error!", "Error intente mas tarde!", "error");
+                    },
+                },
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: -1, className: "dt-font-size" },
+                ],
+                aoColumns: [
+                    { "data": "idNumber" },
+                    { "data": "name" },
+                    { "data": "firstname" },
+                    { "data": "lastName" },
+                    { "data": "email" },
+                    { "data": "phone" },
+                    {
+                        "className": 'details-control',
+                        "orderable": false,
+                        "data": null,
+                        "render": function (data) {
+                            
+                                return '<button  class="btn btn-main">Actualizar</button>';
+                            
+                        },
+                    },
+                    {
+                        "className": 'details-control',
+                        "orderable": false,
+                        "data": null,
+                        "render": function (data) {
+
+                            return '<button  class="btn btn-main">Eliminar</button>';
+
+                        },
+                    }
+                ],
+
+            });
+    }
     $scope.GetProvince = function () {
         $http({
             dataType: 'text',
@@ -149,7 +217,7 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
 
             },
                 function (response) {
-                    alert(response);
+                    alert("Usuario creado con éxito");
                 });
     }
 });

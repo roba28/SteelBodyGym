@@ -83,6 +83,27 @@ namespace SteelBodyGym.Controllers
 
         }
 
-    
-}
+        [HttpPost]
+        public IActionResult GetUserData()
+        {
+            var vDraw = Request.Form["draw"][0];
+            var vStartRec = Convert.ToInt32(Request.Form["start"][0]);
+            var vPageSize = Convert.ToInt32(Request.Form["length"][0]);
+            var vUserList = _AdministratorService.GetUsers();
+            var vTotalRecords = vUserList.Count;
+            var vRecFilter = vUserList.Count;
+            vUserList = vUserList.Skip(vStartRec).Take(vPageSize).ToList();
+            var result = new
+            {
+                draw = Convert.ToInt32(vDraw),
+                recordsTotal = vTotalRecords,
+                recordsFiltered = vRecFilter,
+                data = vUserList
+            };
+
+            return Ok(result);
+        }
+
+
+    }
 }
