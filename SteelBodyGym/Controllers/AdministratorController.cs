@@ -78,7 +78,7 @@ namespace SteelBodyGym.Controllers
         public IActionResult UploadUser([FromBody] User user){
 
             var vResult = _AdministratorService.UploadUser(user);
-            return Ok(vResult);
+            return Ok(new { data =vResult });
 
 
         }

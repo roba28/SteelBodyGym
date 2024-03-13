@@ -209,15 +209,28 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
 
         })
             .then(function (response) {
-                $(".loader").fadeOut();
-                alert(response);
-                $('#modalUsers').modal('show');
-                window.location.reload()
-               
+                if (response.data) {
+                    $(".loader").fadeOut();
+                    swal.fire({
+                        title: "Éxito!",
+                        text: "Cliente creado con éxito",
+                        icon: "success"
+                    });
+                    $('#modalUsers').modal('hide');
+                    dtTableUser.ajax.reload();
+                } else {
+                    $(".loader").fadeOut();
+                    swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: "Ocurrio un error por favor intente mas tarde!"
+                    });
+                    $('#modalUsers').modal('hide');
+                    dtTableUser.ajax.reload();
+                }
+                
 
-            },
-                function (response) {
-                    alert("Usuario creado con éxito");
-                });
+
+            });
     }
 });

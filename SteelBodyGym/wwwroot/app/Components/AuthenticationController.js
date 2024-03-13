@@ -24,6 +24,7 @@ app.controller('AuthenticationController', function ($scope, $http, $filter, $wi
     }
 
     $scope.ValidateLogin = function () {
+        $(".spinner").fadeIn();
         var userData = $scope.frmUser;
         $http({
             dataType: 'text',
@@ -34,6 +35,7 @@ app.controller('AuthenticationController', function ($scope, $http, $filter, $wi
 
         })
             .then(function (response) {
+                $(".spinner").fadeOut();
                 if (response.data.res) {
                     if (response.data.rol == "Administrador") {
                         window.location.href = "/Home/_LayoutAdmin";
@@ -51,14 +53,14 @@ app.controller('AuthenticationController', function ($scope, $http, $filter, $wi
 
                 }
                 else {
-                    alert(response.data.message);
+                    Swal.fire(response.data.message);
                    
                 }
                 
             }
         );
         
-
+        
     }
 
     $scope.OpenModal = function () {
