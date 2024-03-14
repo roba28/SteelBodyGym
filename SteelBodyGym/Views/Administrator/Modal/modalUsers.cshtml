@@ -1,16 +1,16 @@
 ﻿<!-- Modal -->
 <div class="modal fade modal-fullscreen" id="modalUsers" role="dialog" style="position:fixed; z-index:1000; padding-top:5%" data-backdrop="false" ng-app="myApp" ng-controller="UserController">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header text-center">
                 
-                <h4 class="modal-title">Creación de usuario</h4>
+                <h4 class="modal-title ">Creación de usuario</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="col-sm-12">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Tipo Identificación</p>
                             <select class="form-control"
                                     id="IdentificationType"
@@ -20,50 +20,50 @@
                             </select>
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Cédula</p>
-                            <input type="text" id="IdNumber" class="form-control phone" ng-model="frmUser.IdNumber" />
+                            <input type="text" id="IdNumber" class="form-control phone" ng-model="frmUser.IdNumber" required />
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Nombre</p>
-                            <input type="text" id="Name"  class="form-control phone" ng-model="frmUser.Name" />
+                            <input type="text" id="Name" class="form-control phone" ng-model="frmUser.Name" required />
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Primer Apellido</p> 
-                            <input type="text" id="FirstName" class="form-control phone" ng-model="frmUser.Firstname" />
+                            <input type="text" id="FirstName" class="form-control phone" ng-model="frmUser.Firstname" required />
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Segundo Apellido</p>
-                            <input type="text" id="LastName" class="form-control phone" ng-model="frmUser.LastName" />
+                            <input type="text" id="LastName" class="form-control phone" ng-model="frmUser.LastName" required />
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Fecha Nacimiento</p>
-                            <input type="date" id="BirthDate" class="form-control phone" ng-model="frmUser.BirthDate" />
+                            <input type="date" id="BirthDate" class="form-control phone" ng-model="frmUser.BirthDate" required />
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Género</p>
-                            <select class="form-control" ng-model="frmUser.Gender" id="Gender">
+                            <select class="form-control" ng-model="frmUser.Gender" id="Gender" required>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
                             </select>
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Correo electrónico</p>
-                            <input type="email" id="Email" class="form-control phone" ng-model="frmUser.Email" />
+                            <input type="email" id="Email" class="form-control phone" ng-model="frmUser.Email" required />
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Teléfono</p>
-                            <input type="text" id="Phone" class="form-control phone" ng-model="frmUser.Phone" />
+                            <input type="text" id="Phone" class="form-control phone" ng-model="frmUser.Phone" required />
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Rol</p>
                             <select class="form-control"
                                     id="Rol"
@@ -73,7 +73,7 @@
                             </select>
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Estado</p>
                             <select class="form-control"
                                     id="State"
@@ -83,7 +83,7 @@
                             </select>
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Provincia</p>
                             <select class="form-control"
                                     id="province"
@@ -94,7 +94,7 @@
                             </select>
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Cantón</p>
                             <select class="form-control"
                                     id="Counties"
@@ -105,7 +105,7 @@
                             </select>
                             <br />
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <p>Distrito</p>
                             <select class="form-control"
                                     id="Cities"
@@ -120,7 +120,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning text-black" ng-click="uploadStudent()">Guardar</button>
+                <button type="submit" class="btn btn-warning text-black" ng-click="uploadStudent()">Guardar</button>
                 <button type="button" class="btn btn-danger text-black" data-dismiss="modal">Cerrar</button>
             </div>
         </div>

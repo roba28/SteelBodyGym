@@ -84,7 +84,7 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
                         "data": null,
                         "render": function (data) {
                             
-                                return '<button  class="btn btn-main">Actualizar</button>';
+                            return '<button  class="btn btn-warning text-black">Actualizar</button>';
                             
                         },
                     },
@@ -94,7 +94,7 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
                         "data": null,
                         "render": function (data) {
 
-                            return '<button  class="btn btn-main">Eliminar</button>';
+                            return '<button  class="btn btn-danger text-white">Eliminar</button>';
 
                         },
                     }

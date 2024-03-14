@@ -26,39 +26,47 @@ app.controller('AuthenticationController', function ($scope, $http, $filter, $wi
     $scope.ValidateLogin = function () {
         $(".spinner").fadeIn();
         var userData = $scope.frmUser;
-        $http({
-            dataType: 'text',
-            url: base_url + 'Login/ValidateLogin/',
-            method: "POST",
-            data: userData,
-            responseType: 'json',
+        if ($scope.frmUser.IdNumber == null || $scope.frmUser.Password == null) {
+            $(".spinner").fadeOut();
+            Swal.fire('Debe completar el formulario');
 
-        })
-            .then(function (response) {
-                $(".spinner").fadeOut();
-                if (response.data.res) {
-                    if (response.data.rol == "Administrador") {
-                        window.location.href = "/Home/_LayoutAdmin";
-                    }
-                    else {
-                        if (response.data.rol == "Entrenador") {
-                            window.location.href = "/Home/_LayoutCoach";
+        }
+        else {
+            $http({
+                dataType: 'text',
+                url: base_url + 'Login/ValidateLogin/',
+                method: "POST",
+                data: userData,
+                responseType: 'json',
+
+            })
+                .then(function (response) {
+                    $(".spinner").fadeOut();
+                    if (response.data.res) {
+                        if (response.data.rol == "Administrador") {
+                            window.location.href = "/Home/_LayoutAdmin";
                         }
                         else {
-                            window.location.href = "/Home/_LayoutUser";
+                            if (response.data.rol == "Entrenador") {
+                                window.location.href = "/Home/_LayoutCoach";
+                            }
+                            else {
+                                window.location.href = "/Home/_LayoutUser";
+                            }
+
                         }
 
+
                     }
-                        
+                    else {
+                        Swal.fire(response.data.message);
+
+                    }
 
                 }
-                else {
-                    Swal.fire(response.data.message);
-                   
-                }
-                
-            }
-        );
+                );
+        }
+        
         
         
     }
