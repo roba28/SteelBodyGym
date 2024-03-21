@@ -15,8 +15,11 @@ namespace SteelBodyGym.IServices
         List<UserState> GetUserStates();
 
         List<ViewsPerRole> GetPerRoles();
-        bool? UploadUser(User auser);
+        bool UpdateUser(User auser);
+        bool InsertUser(User auser);
         User GetUserInfo(string aIdNumber);
         Role GetRoleByGUID(Guid aRolGUID);
+
+        bool DeleteClientByIDNumner(string aIDNumber);
     }
 }

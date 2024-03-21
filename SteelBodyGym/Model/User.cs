@@ -28,7 +28,6 @@ namespace SteelBodyGym.Model
         public string? Email { get; set; }
         public string? Phone { get; set; }
         public string? Password { get; set; }
-
         public virtual City? IdCitiesNavigation { get; set; }
         public virtual County? IdCountiesNavigation { get; set; }
         public virtual Province? IdProvinceNavigation { get; set; }

@@ -75,12 +75,19 @@ namespace SteelBodyGym.Controllers
         }
 
         [HttpPost]
-        public IActionResult UploadUser([FromBody] User user){
+        public IActionResult InsertUser([FromBody] User user){
+            
+                var vResult = _AdministratorService.InsertUser(user);
+                return Ok( vResult );
+            
+        }
 
-            var vResult = _AdministratorService.UploadUser(user);
-            return Ok(new { data =vResult });
-
-
+        [HttpPost]
+        public IActionResult UploadUser([FromBody] User user)
+        {
+                var vResult = _AdministratorService.UpdateUser(user);
+                return Ok( vResult );
+            
         }
 
         [HttpPost]
@@ -102,6 +109,25 @@ namespace SteelBodyGym.Controllers
             };
 
             return Ok(result);
+        }
+
+        [HttpPost]
+        public IActionResult DeleteUser([FromBody] string  aIdNumber)
+        {
+
+            var vResult = _AdministratorService.DeleteClientByIDNumner(aIdNumber);
+            return Ok(new { data = vResult });
+
+
+        }
+
+        [HttpPost]
+        public IActionResult GetUserInfoByIDNumber([FromBody] string aIdNumber)
+        {
+
+            User vResult = _AdministratorService.GetUserInfo(aIdNumber);
+            return Ok(vResult);
+
         }
 
 
