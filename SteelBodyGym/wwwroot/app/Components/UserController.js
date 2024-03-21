@@ -12,7 +12,7 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
         Birth_Date: null,
         Gender: null,
         IdRol: null,
-        IdentificationTypeId:null,
+        IdentificationTypeId: null,
         IdState: null,
         IdProvince: null,
         IdCounties: null,
@@ -20,6 +20,7 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
         Email: null,
         Phone: null,
     }
+
     $scope.vSelectProvinces = [];
     $scope.vSelectCounties = [];
     $scope.vSelectCities = [];
@@ -29,7 +30,7 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
     var dtTableUser;
     $scope.loadData = function () {
         $(".loader").fadeIn();
-       
+
 
         $(".loader").fadeOut();
     }
@@ -83,9 +84,9 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
                         "orderable": false,
                         "data": null,
                         "render": function (data) {
-                            
+
                             return '<button  class="btn btn-warning text-black">Actualizar</button>';
-                            
+
                         },
                     },
                     {
@@ -113,7 +114,7 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
             .then(function (response) {
                 $scope.vSelectProvinces = response.data;
             }
-        );
+            );
     }
 
     $scope.GetCounties = function () {
@@ -185,7 +186,7 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
             }
             );
     }
-    
+
     $scope.OpenModal = function () {
         $('#modalUsers').modal('show');
     }
@@ -228,9 +229,42 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
                     $('#modalUsers').modal('hide');
                     dtTableUser.ajax.reload();
                 }
-                
-
 
             });
     }
+    $scope.Prueba = function () {
+        var userData = $scope.frmUser;
+        $(".loader").fadeIn();
+
+        $http({
+            url: base_url + 'Home/Prueba/',
+            method: "POST",
+            data: JSON.stringify('3456789'),
+            responseType: 'json',
+
+        })
+            .then(function (response) {
+                $scope.frmUser.IdentificationTypeId = response.data.identificationTypeId;
+                $scope.frmUser.Id_Number = response.data.idNumber;
+                $scope.frmUser.Name = response.data.name;
+                $scope.frmUser.Firstname = response.data.firstname;
+                $scope.frmUser.LastName = response.data.lastName;
+                $scope.frmUser.Name = response.data.name;
+                $scope.frmUser.Birth_Date = new Date(response.data.birthDate);
+                $scope.frmUser.Gender = response.data.gender;
+                $scope.frmUser.Email = response.data.email;
+                $scope.frmUser.Phone = response.data.phone;
+                $scope.frmUser.IdState = response.data.idState;
+                $scope.frmUser.IdProvince = response.data.idProvince;
+                $scope.frmUser.IdCounties = response.data.idCounties;
+                $scope.frmUser.IdCities = response.data.idCities;
+
+                //window.location.reload();
+
+                $(".loader").fadeOut();
+            });
+    }
+
+    $scope.Prueba();
+
 });

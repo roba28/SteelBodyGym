@@ -25,34 +25,118 @@
         <div>
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 50px">
                 <h2 class="text-warning text-uppercase font-weight-bold">Perfil</h2>
+
             </div>
             <div class="d-flex justify-content-lg-start">
             </div><br />
             <div class="card">
-                <div class="card-body">
-                    <table id="dataTableCertificationStatement" class="table responsive nowrap" width="100%">
-                        <form action="/my-handling-form-page" method="post">
-                            <ul>
-                                <li>
-                                    <label for="name">Nombre:</label>
-                                </li></br>
-                                <li>
-                                    <label for="mail">Primer Apellido:</label>
-                                </li></br>
-                                <li>
-                                    <label for="mail">Segundo Apellido:</label>
-                                </li></br>
-                                <li>
-                                    <label for="msg">Teléfono:</label>
-                                </li></br>
-                                <li>
-                                    <label for="msg">Correo:</label>
-                                </li>
-                            </ul>
-                        </form>
-                    </table>
+                <div class="modal-body">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p>Tipo Identificación</p>
+                                <select class="form-control"
+                                        id="IdentificationType"
+                                        required
+                                        ng-model="frmUser.IdentificationTypeId"
+                                        ng-options="item.identificationTypeId as item.name for item in vSelectIdentificationType" readonly>
+                                </select>
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Cédula</p>
+                                <input type="text" id="IdNumber" class="form-control phone" ng-model="frmUser.Id_Number" required readonly/>
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Nombre</p>
+                                <input type="text" id="Name" class="form-control phone" ng-model="frmUser.Name" required readonly />
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Primer Apellido</p>
+                                <input type="text" id="FirstName" class="form-control phone" ng-model="frmUser.Firstname" required readonly />
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Segundo Apellido</p>
+                                <input type="text" id="LastName" class="form-control phone" ng-model="frmUser.LastName" required readonly />
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Fecha Nacimiento</p>
+                                <input type="date" id="BirthDate" class="form-control phone" ng-model="frmUser.BirthDate" required readonly />
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Género</p>
+                                <select class="form-control" ng-model="frmUser.Gender" id="Gender" required readonly>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                </select>
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Correo electrónico</p>
+                                <input type="email" id="Email" class="form-control phone" ng-model="frmUser.Email" required />
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Teléfono</p>
+                                <input type="text" id="Phone" class="form-control phone" ng-model="frmUser.Phone" required />
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Estado</p>
+                                <select class="form-control"
+                                        id="State"
+                                        required
+                                        ng-model="frmUser.IdState"
+                                        ng-options="item.idState as item.stateName for item in vSelectUserState">
+                                </select>
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Provincia</p>
+                                <select class="form-control"
+                                        id="province"
+                                        required
+                                        ng-model="frmUser.IdProvince"
+                                        ng-options="item.idProvince as item.provinceName for item in vSelectProvinces"
+                                @*ng-change="refreshData(frmCert.RequestReasonGUID)"*@>
+                                </select>
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Cantón</p>
+                                <select class="form-control"
+                                        id="Counties"
+                                        required
+                                        ng-model="frmUser.IdCounties"
+                                        ng-options="item.idCounties as item.name for item in vSelectCounties"
+                                @*ng-change="refreshData(frmCert.RequestReasonGUID)"*@>
+                                </select>
+                                <br />
+                            </div>
+                            <div class="col-md-4">
+                                <p>Distrito</p>
+                                <select class="form-control"
+                                        id="Cities"
+                                        required
+                                        ng-model="frmUser.IdCities"
+                                        ng-options="item.idCities as item.name for item in vSelectCities"
+                                @*ng-change="refreshData(frmCert.RequestReasonGUID)"*@>
+                                </select>
+                                <br />
+                            </div>
+                        </div>
+                    <div class="text-center">
+                        <button class="btn btn-warning text-black " ng-click="uploadStudent()">Guardar</button>
+                    </div>
+                    </div>
                 </div>
             </div>
+            @* <partial name="~/Views/User/Modal/modalProfile.cshtml"> *@
         </div>
     </div>
 

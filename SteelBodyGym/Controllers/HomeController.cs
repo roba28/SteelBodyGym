@@ -68,5 +68,16 @@ namespace SteelBodyGym.Controllers
         {
             return PartialView();
         }
+
+        [HttpPost]
+        public IActionResult Prueba([FromBody] String user)
+        {
+
+            Model.User vResult = _AdministratorService.GetUserInfo(user);
+
+            return Ok(vResult);
+
+        }
+
     }
 }
