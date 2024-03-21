@@ -28,7 +28,7 @@
                 <h2 class="text-warning text-uppercase font-weight-bold">Usuarios</h2>
             </div>
             <div class="d-flex justify-content-lg-start m-3">
-                <button class="btn btn-warning text-black" ng-click="OpenModal()">Agregar Usuario</button>
+                <button class="btn btn-warning text-black" ng-click="OpenModal('true')">Agregar Usuario</button>
             </div><br />
             <div class="card m-3">
                 <div class="card-body">
@@ -49,6 +49,8 @@
                 </div>
             </div>
             <partial name="~/Views/Administrator/Modal/modalUsers.cshtml">
+                <partial name="~/Views/Administrator/Modal/modalUpdateUsers.cshtml">
+                
         </div>
     </div>
    
