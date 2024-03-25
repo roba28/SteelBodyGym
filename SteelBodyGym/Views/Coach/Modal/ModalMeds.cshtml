@@ -1,0 +1,53 @@
+﻿<div class="modal fade modal-fullscreen" id="ModalMeds" role="dialog" style="position:fixed; z-index:1000; padding-top:5%" data-backdrop="false" ng-app="myApp" ng-controller="MedsController">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title">Creación de rutina</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <!-- Otros campos existentes -->
+                        <div class="col-md-4">
+                            <p>Peso </p>
+                            <input type="text" id="RoutineNumber" class="form-control" ng-model="frmUser.RoutineNumber" required />
+                            <br />
+                        </div>
+                        <div class="col-md-4">
+                            <p>Altura</p>
+                            <input type="text" id="RoutineName" class="form-control" ng-model="frmUser.RoutineName" required />
+                            <br />
+                        </div>
+                        <div class="col-md-4">
+                            <p>% Grasa corporal</p>
+                            <select class="form-control" id="MuscleType" ng-model="frmUser.MuscleType" required>
+                                <option value="+10%">+10%</option>
+                                <option value="+20%">+20%</option>
+                                <option value="+30%">+30%</option>
+                                <option value="+40">+40%</option>
+                                <!-- Agregar más opciones según necesidad -->
+                            </select>
+                            <br />
+                        </div>
+                        <div class="col-md-4">
+                            <p>% de musculo</p>
+                            <input type="text" id="Repetitions" class="form-control" ng-model="frmUser.Repetitions" required />
+                            <br />
+                        </div>
+                        <!-- Otros campos existentes -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning text-black" ng-click="uploadStudent()">Guardar</button>
+                    <button type="button" class="btn btn-danger text-black" data-dismiss="modal">Cerrar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

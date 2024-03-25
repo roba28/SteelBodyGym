@@ -2,7 +2,7 @@
 <html lang="en">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="~/lib/jquery/jquery.min.js"></script>
-<script src="~/app/components/UserController.js"></script>
+<script src="~/app/components/MedsController.js"></script>
 <head>
     <meta charset="utf-8">
     <title>SteelBody Gym</title>
@@ -12,40 +12,44 @@
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
 </head>
 
 <body class="bg-white">
-    <div ng-app="myApp" ng-controller="UserController">
+    <div ng-app="myApp" ng-controller="MedsController">
 
         <p>
             @Html.Partial("_LayoutCoach")
         </p>
         <div>
             <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 50px">
-                <h2 class="text-warning text-uppercase font-weight-bold">Maquina de Gym</h2>
+                <h2 class="text-warning text-uppercase font-weight-bold">Medidas</h2>
             </div>
-            <div class="d-flex justify-content-lg-start">
+            <div class="d-flex justify-content-lg-start m-3">
+                <button class="btn btn-warning text-black" ng-click="OpenModal()">Agregar Medida</button>
+
+
             </div><br />
-            <div class="card">
+            <div class="card m-3">
                 <div class="card-body">
-                    <table id="dataTableCertificationStatement" class="table responsive nowrap" width="100%">
+                    <table id="dataTableUsers" class="table responsive nowrap" width="100%">
                         <thead>
                             <tr>
-                                <th data-priority="1">Id Maquina </th>
-                                <th>Nombre</th>
-                                
+                                <th data-priority="1">Altura</th>
+                                <th>Peso</th>
+                                <th>% de grasa</th>
+                                <th>% de musculo</th>
 
                             </tr>
                         </thead>
                     </table>
                 </div>
             </div>
-            <partial name="~/Views/Administrator/Modal/modalUsers.cshtml">
+            <partial name="~/Views/Coach/Modal/ModalMeds.cshtml">
         </div>
     </div>
 
     <a href="#" class="btn btn-outline-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.6/dist/sweetalert2.all.min.js"></script>
 </body>
-
-</html>
