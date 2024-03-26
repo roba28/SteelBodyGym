@@ -14,7 +14,7 @@ namespace SteelBodyGym.Controllers
         {
             return View();
         }
-        public IActionResult GymMachines()
+        public IActionResult Meds()
         {
             return View();
         }

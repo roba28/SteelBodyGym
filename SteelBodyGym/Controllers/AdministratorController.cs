@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SteelBodyGym.IServices;
 using SteelBodyGym.Model;
-using SteelBodyGym.Services;
+using System;
+using System.Linq;
 
 namespace SteelBodyGym.Controllers
 {
@@ -15,6 +16,7 @@ namespace SteelBodyGym.Controllers
             this._GlobalServices = GlobalServices;
             _AdministratorService = administratorService;
         }
+
         public IActionResult Users()
         {
             return View();
@@ -23,58 +25,46 @@ namespace SteelBodyGym.Controllers
         [HttpPost]
         public IActionResult GetProvinces()
         {
-
             var vResult = _GlobalServices.GetProvinces();
             return Ok(vResult);
-
         }
 
         [HttpPost]
         public IActionResult GetCounties()
         {
-
             var vResult = _GlobalServices.Getcounties();
             return Ok(vResult);
-
         }
 
         [HttpPost]
         public IActionResult GetCities()
         {
-
             var vResult = _GlobalServices.GetCities();
             return Ok(vResult);
-
         }
 
         [HttpPost]
         public IActionResult GetIdentificationType()
         {
-
             var vResult = _GlobalServices.GetIdentificationType();
             return Ok(vResult);
-
         }
 
         [HttpPost]
         public IActionResult GetUserSates()
         {
-
             var vResult = _GlobalServices.GetUserState();
             return Ok(vResult);
-
         }
 
         [HttpPost]
         public IActionResult GetRoles()
         {
-
             var vResult = _GlobalServices.GetRoles();
             return Ok(vResult);
-
         }
 
-        [HttpPost]
+ 
         public IActionResult InsertUser([FromBody] User user){
             
                 var vResult = _AdministratorService.InsertUser(user);
@@ -88,6 +78,7 @@ namespace SteelBodyGym.Controllers
                 var vResult = _AdministratorService.UpdateUser(user);
                 return Ok( vResult );
             
+
         }
 
         [HttpPost]
@@ -110,7 +101,6 @@ namespace SteelBodyGym.Controllers
 
             return Ok(result);
         }
-
         [HttpPost]
         public IActionResult DeleteUser([FromBody] string  aIdNumber)
         {
@@ -129,7 +119,6 @@ namespace SteelBodyGym.Controllers
             return Ok(vResult);
 
         }
-
 
     }
 }

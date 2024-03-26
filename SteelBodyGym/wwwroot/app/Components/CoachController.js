@@ -17,8 +17,8 @@
         function activate() { }
     }
 
-    $scope.OpenModal2 = function () {
-        $('#modalUsers').modal('show');
+    $scope.OpenModal = function () {
+        $('#ModalRoutines').modal('show');
     }
 
     $scope.GetProvince();
