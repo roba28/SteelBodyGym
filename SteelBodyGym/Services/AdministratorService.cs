@@ -48,8 +48,25 @@ namespace SteelBodyGym.Services
             return _SteelBodyGymContext.ViewsPerRoles.ToList();
         }
 
-        public bool? UploadUser(User auser)
+        public bool InsertUser(User auser)
         {
+            var userData = _SteelBodyGymContext.Users.Where(st => st.IdNumber == auser.IdNumber).SingleOrDefault();
+            User u = userData;
+            if (u != null)
+            {
+                return false;
+            }
+            else
+            {
+                _SteelBodyGymContext.Users.Add(auser);
+                _SteelBodyGymContext.SaveChanges();
+                return true;
+            }
+            
+        }
+        public bool UpdateUser(User auser)
+        {
+            bool result = false;
             var userData = _SteelBodyGymContext.Users.Where(st => st.IdNumber == auser.IdNumber).SingleOrDefault();
             User u = userData;
             if (u != null)
@@ -70,6 +87,7 @@ namespace SteelBodyGym.Services
                     u.Email = auser.Email;
                     u.Phone = auser.Phone;
                     _SteelBodyGymContext.Update(u);
+                    _SteelBodyGymContext.SaveChanges();
                     return true;
                 }
                 catch (Exception)
@@ -77,13 +95,8 @@ namespace SteelBodyGym.Services
                     return false;
                 }
             }
-            else
-            {
-                _SteelBodyGymContext.Users.Add(auser);
-                _SteelBodyGymContext.SaveChanges();
-                return true;
-            }
-            
+            return result;
+
         }
 
         public User GetUserInfo(string aIdNumber)
@@ -95,6 +108,28 @@ namespace SteelBodyGym.Services
         {
             return _SteelBodyGymContext.Roles.Where(p => p.IdRol == aRolGUID).SingleOrDefault();
             
+        }
+
+        public bool DeleteClientByIDNumner(string aIDNumber)
+        {
+            try
+            {
+                var vClient = _SteelBodyGymContext.Users.Where(p => p.IdNumber == aIDNumber).SingleOrDefault();
+                if (vClient != null)
+                {
+                    _SteelBodyGymContext.Users.Remove(vClient);
+                    _SteelBodyGymContext.SaveChanges();
+                    return true;
+                }
+                else
+                    return false;
+
+            }
+            catch (Exception )
+            {
+                return false;
+            }
+
         }
 
 

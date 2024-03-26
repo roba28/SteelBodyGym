@@ -5,11 +5,11 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
     var base_url = host + '/';
     $scope.frmUser = {
 
-        Id_Number: null,
+        IdNumber: null,
         Name: null,
         Firstname: null,
         LastName: null,
-        Birth_Date: null,
+        BirthDate: null,
         Gender: null,
         IdRol: null,
         IdentificationTypeId:null,
@@ -18,8 +18,9 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
         IdCounties: null,
         IdCities: null,
         Email: null,
-        Phone: null,
+        Phone: null
     }
+    $scope.IsInsert= false;
     $scope.vSelectProvinces = [];
     $scope.vSelectCounties = [];
     $scope.vSelectCities = [];
@@ -34,6 +35,12 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
         $(".loader").fadeOut();
     }
     $scope.loadData();
+
+    var element = document.getElementById("homeMenu");
+    element.classList.remove("active");
+
+    var element1 = document.getElementById("UserMenu");
+    element1.classList.add("active");
 
     if ($.fn.dataTable.isDataTable('#dataTableUsers')) {
         dtTableUser = $('#dataTableUsers').DataTable();
@@ -187,7 +194,52 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
     }
     
     $scope.OpenModal = function () {
+        $scope.frmUser.IdNumber = null;
+        $scope.frmUser.Name = null;
+        $scope.frmUser.Firstname = null;
+        $scope.frmUser.LastName = null;
+        $scope.frmUser.BirthDate = null;
+        $scope.frmUser.Gender = null;
+        $scope.frmUser.IdRol = null;
+        $scope.frmUser.IdentificationTypeId = null;
+        $scope.frmUser.IdState = null;
+        $scope.frmUser.IdProvince = null;
+        $scope.frmUser.IdCounties = null;
+        $scope.frmUser.IdCities = null;
+        $scope.frmUser.Email = null;
+        $scope.frmUser.Phone = null;
         $('#modalUsers').modal('show');
+    }
+
+    $scope.OpenUpdateModal = function (vIDNumer) {
+        $http({
+            url: base_url + 'Administrator/GetUserInfoByIDNumber/',
+            method: "POST",
+            data: JSON.stringify(vIDNumer),
+            responseType: 'json',
+
+        })
+            .then(function (response) {
+
+                $scope.frmUser.IdNumber = response.data.idNumber;
+                $scope.frmUser.Name = response.data.name;
+                $scope.frmUser.Firstname = response.data.firstname;
+                $scope.frmUser.LastName = response.data.lastName;
+                $scope.frmUser.BirthDate = new Date(response.data.birthDate);
+                $scope.frmUser.Gender = response.data.gender;
+                $scope.frmUser.IdRol = response.data.idRol;
+                $scope.frmUser.IdentificationTypeId = response.data.identificationTypeId;
+                $scope.frmUser.IdState = response.data.idState;
+                $scope.frmUser.IdProvince = response.data.idProvince;
+                $scope.frmUser.IdCounties = response.data.idCounties;
+                $scope.frmUser.IdCities = response.data.idCities;
+                $scope.frmUser.Email = response.data.email;
+                $scope.frmUser.Phone = response.data.phone;
+                $('#modalUpdateUsers').modal('show');
+            });
+
+
+        
     }
 
     $scope.GetProvince();
@@ -200,37 +252,141 @@ app.controller('UserController', function ($scope, $http, $filter, $window) {
     $scope.uploadStudent = function () {
         var userData = $scope.frmUser;
         $(".loader").fadeIn();
+            $http({
+                url: base_url + 'Administrator/InsertUser/',
+                method: "POST",
+                data: userData,
+                responseType: 'json',
 
-        $http({
-            url: base_url + 'Administrator/UploadUser/',
-            method: "POST",
-            data: userData,
-            responseType: 'json',
-
-        })
-            .then(function (response) {
-                if (response.data) {
-                    $(".loader").fadeOut();
-                    swal.fire({
-                        title: "Éxito!",
-                        text: "Cliente creado con éxito",
-                        icon: "success"
-                    });
-                    $('#modalUsers').modal('hide');
-                    dtTableUser.ajax.reload();
-                } else {
-                    $(".loader").fadeOut();
-                    swal.fire({
-                        icon: "error",
-                        title: "Error",
-                        text: "Ocurrio un error por favor intente mas tarde!"
-                    });
-                    $('#modalUsers').modal('hide');
-                    dtTableUser.ajax.reload();
-                }
-                
+            })
+                .then(function (response) {
+                    if (response.data) {
+                        $(".loader").fadeOut();
+                        swal.fire({
+                            title: "Éxito!",
+                            text: "Cliente creado con éxito",
+                            icon: "success"
+                        });
+                        $('#modalUsers').modal('hide');
+                        dtTableUser.ajax.reload();
+                    } else {
+                        $(".loader").fadeOut();
+                        swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: "El cliente ya existe en el sistema!"
+                        });
+                        $('#modalUsers').modal('hide');
+                        dtTableUser.ajax.reload();
+                    }
 
 
-            });
+
+                });
     }
+
+    $('#dataTableUsers').on('click', 'button', function () {
+        var action = $(this).text();
+        var vFila = dtTableUser.row($(this).parents('tr')).data();
+        var vIDNumer = null;
+        if (vFila == undefined) {
+            var vSelected_row = $(this).parents('tr');
+            if (vSelected_row.hasClass('child')) {
+                vSelected_row = vSelected_row.prev();
+            }
+            var vRowData = $('#dataTableUsers').DataTable().row(vSelected_row).data();
+            vIDNumer = vRowData.idNumber;
+        }
+        else {
+            vIDNumer = vFila.idNumber;
+        }
+        if (action == "Eliminar") {
+            $scope.DeleteClient(vIDNumer);
+        }
+        if (action == "Actualizar") {
+            $scope.OpenUpdateModal(vIDNumer);
+        }
+
+    });
+
+    $scope.DeleteClient = function (vIDNumber) 
+    {
+        Swal.fire({
+            title: "Seguro que desea eliminar el cliente?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                $http({
+                    url: base_url + 'Administrator/DeleteUser/',
+                    method: "POST",
+                    data: JSON.stringify(vIDNumber),
+                    responseType: 'json',
+
+                })
+                    .then(function (response) {
+                        if (response.data) {
+                            $(".loader").fadeOut();
+                            Swal.fire({
+                                title: "Eliminado!",
+                                text: "Cliente eliminado con éxito!",
+                                icon: "success"
+                            });
+                            dtTableUser.ajax.reload();
+                        } else {
+                            $(".loader").fadeOut();
+                            swal.fire({
+                                icon: "error",
+                                title: "Error",
+                                text: "Ocurrio un error por favor intente mas tarde!"
+                            });
+                            dtTableUser.ajax.reload();
+                        }
+                    });
+            }
+        });
+
+    }
+
+    $scope.updateUser = function () {
+        var userData = $scope.frmUser;
+        $(".loader").fadeIn();
+            $http({
+                url: base_url + 'Administrator/UploadUser/',
+                method: "POST",
+                data: userData,
+                responseType: 'json',
+
+            })
+                .then(function (response) {
+                    if (response.data) {
+                        $(".loader").fadeOut();
+                        swal.fire({
+                            title: "Éxito!",
+                            text: "Cliente actualizado con éxito",
+                            icon: "success"
+                        });
+                        $('#modalUpdateUsers').modal('hide');
+                        dtTableUser.ajax.reload();
+                    } else {
+                        $(".loader").fadeOut();
+                        swal.fire({
+                            icon: "error",
+                            title: "Error",
+                            text: "Ocurrio un error por favor intente mas tarde!"
+                        });
+                        $('#modalUpdateUsers').modal('hide');
+                        dtTableUser.ajax.reload();
+                    }
+
+
+
+                });
+
+    }
+
 });
